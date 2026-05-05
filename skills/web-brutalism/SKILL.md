@@ -50,7 +50,7 @@ The principle: **if a property override is purely decorative, remove it.**
   removes browser inconsistencies so co-located controls align to the same size
 - `font-family` using system font stacks — selecting among fonts already installed on the OS
   imposes no download cost and respects the spirit of native materials; use stacks from
-  https://modernfontstacks.com/, chosen to match the style preset and
+  [modern-font-stacks.md](modern-font-stacks.md), chosen to match the style preset and
   typographic voice established in the design brief
 
 **Not allowed — decorative or costly:**
@@ -129,7 +129,7 @@ philosophical cousin to brutalism — both prioritise rational structure over de
 - Alignment: strict flush-left; grid columns respected across all elements
 - Font spacing: headings slightly tracked out (`letter-spacing: 0.02–0.05em`); body untouched
 - Elements: favour `section`/`header`/`nav` structure; `dl` for metadata
-- Font stacks: **Neo-Grotesque** (primary), Geometric Humanist
+- Font stacks: **Neo-Grotesque** (primary, e.g. Helvetica/Inter), Geometric Humanist (Futura/Avenir)
 - Feel: authoritative, rational, clean
 
 ### Bauhaus / Functionalist
@@ -141,7 +141,8 @@ table lines, `hr`) as design elements rather than hiding them.
 - Alignment: grid-governed, geometric grouping
 - Font spacing: uppercase headings with compensating `letter-spacing`; body untouched
 - Elements: `fieldset`/`legend`, `table`, `dl`, `hr` as primary structural vocabulary
-- Font stacks: **Industrial** (primary), Geometric Humanist
+- Font stacks: **Industrial** (primary, e.g. Bahnschrift/Franklin Gothic), Geometric Humanist
+  (Futura), Slab Serif (Rockwell — block serifs fit the geometric vocabulary)
 - Feel: industrial, purposeful, structured
 
 ### Editorial / Magazine
@@ -153,8 +154,9 @@ design — a large gap before a section heading and a tight gap after it creates
 - Alignment: mixed — body flush-left, `blockquote`/`figure` with distinct margin treatment
 - Font spacing: headings may use `letter-spacing` and adjusted `line-height` for rhythm
 - Elements: `blockquote`, `figure`/`figcaption`, `aside`, `details` for sidebars
-- Font stacks: **Transitional or Old Style** (news/literary), **Neo-Grotesque or Industrial**
-  (fashion/modern), Humanist (warm/personal) — let the subject matter decide
+- Font stacks: **Transitional or Old Style** (news/literary — Charter, Garamond), **Didone**
+  (fashion/luxury — Didot, Bodoni), **Neo-Grotesque or Industrial** (modern/utility editorial),
+  Humanist (warm/personal) — let the subject matter decide
 - Feel: dynamic, journalistic, considered
 
 ### Technical / Documentation
@@ -165,7 +167,8 @@ Dense, precise, monospace-forward. Native code and data elements are first-class
 - Alignment: strict; code blocks, tables, and `dl` all share a left edge
 - Font spacing: none; body and code elements left fully native
 - Elements: `code`, `pre`, `kbd`, `samp`, `var`, `table`, `dl`, `details`/`summary` for collapsible sections
-- Font stacks: **Monospace Code** (primary), Monospace Slab Serif
+- Font stacks: **Monospace Code** (primary, e.g. ui-monospace/Cascadia Code), Monospace Slab Serif
+  (Courier — typewriter feel for reports and tabular output)
 - Feel: precise, information-dense, developer-native
 
 ### Minimalist
@@ -177,7 +180,8 @@ design; every element needs a reason to exist.
 - Alignment: consistent and quiet; no element competes for attention
 - Font spacing: none or very subtle; let the browser scale speak
 - Elements: minimal; remove anything not earning its place
-- Font stacks: **System UI** (primary), Humanist, Geometric Humanist
+- Font stacks: **System UI** (primary — highest legibility, lowest visual noise), Humanist,
+  Classical Humanist (Optima/Candara — subtle stroke variation without serifs, very quiet)
 - Feel: calm, considered, spacious
 
 ---
