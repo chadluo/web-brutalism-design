@@ -45,10 +45,15 @@ The principle: **if a property override is purely decorative, remove it.**
   be conservative on body text where readability is the priority
 - Form element normalization: `font-size: inherit` on `input`, `button`, `select`, `textarea` —
   removes browser inconsistencies so co-located controls align to the same size
+- `font-family` using system font stacks — selecting among fonts already installed on the OS
+  imposes no download cost and respects the spirit of native materials; use stacks from
+  https://github.com/system-fonts/modern-font-stacks, chosen to match the style preset and
+  typographic voice established in the design brief
 
-**Not allowed — decorative:**
+**Not allowed — decorative or costly:**
 - `color`, `background-color` — breaks dark mode, high-contrast mode, accessibility preferences
-- `font-family` — overrides the user's system font
+- Web fonts (`@font-face`, Google Fonts, Typekit, etc.) — download cost and foreign aesthetic;
+  system font stacks are the alternative
 - `font-size` on semantic elements (`h1`–`h6`, `p`, `small`, etc.) — destroys the browser's scale
 - `border-color`, `border-radius`, `outline` — decorative; `outline` removal breaks focus visibility
 - `font-weight`, `text-transform` on body/paragraph elements
@@ -83,13 +88,16 @@ Do **not** add a CSS reset. Resets erase browser defaults and force you to rebui
 
 ## Start with a Design Brief
 
-Before writing any CSS, establish two things:
+Before writing any CSS, establish three things:
 
 1. **What is the page for?** (settings panel, editorial article, dashboard, landing page, form)
 2. **What should it feel like?** (formal/professional, relaxed/editorial, bold/modern, dense/technical)
+3. **What is the typographic voice?** — pick from the style preset's recommended font stacks;
+   context matters: a fashion editorial and a news editorial are both "Editorial" preset but call
+   for different voices (geometric/industrial vs. transitional serif)
 
-The feel determines spacing density, heading-to-body contrast, and font-spacing choices. Use the
-style presets below as named starting points — they translate a stated feel into concrete decisions.
+The feel and voice together determine spacing density, heading contrast, and font stack choice.
+Use the style presets below as named starting points.
 
 ## Style Presets
 
@@ -103,6 +111,7 @@ philosophical cousin to brutalism — both prioritise rational structure over de
 - Alignment: strict flush-left; grid columns respected across all elements
 - Font spacing: headings slightly tracked out (`letter-spacing: 0.02–0.05em`); body untouched
 - Elements: favour `section`/`header`/`nav` structure; `dl` for metadata
+- Font stacks: **Neo-Grotesque** (primary), Geometric Humanist
 - Feel: authoritative, rational, clean
 
 ### Bauhaus / Functionalist
@@ -112,6 +121,7 @@ table lines, `hr`) as design elements rather than hiding them.
 - Alignment: grid-governed, geometric grouping
 - Font spacing: uppercase headings with compensating `letter-spacing`; body untouched
 - Elements: `fieldset`/`legend`, `table`, `dl`, `hr` as primary structural vocabulary
+- Font stacks: **Industrial** (primary), Geometric Humanist
 - Feel: industrial, purposeful, structured
 
 ### Editorial / Magazine
@@ -121,6 +131,8 @@ design — a large gap before a section heading and a tight gap after it creates
 - Alignment: mixed — body flush-left, `blockquote`/`figure` with distinct margin treatment
 - Font spacing: headings may use `letter-spacing` and adjusted `line-height` for rhythm
 - Elements: `blockquote`, `figure`/`figcaption`, `aside`, `details` for sidebars
+- Font stacks: **Transitional or Old Style** (news/literary), **Neo-Grotesque or Industrial**
+  (fashion/modern), Humanist (warm/personal) — let the subject matter decide
 - Feel: dynamic, journalistic, considered
 
 ### Technical / Documentation
@@ -129,6 +141,7 @@ Dense, precise, monospace-forward. Native code and data elements are first-class
 - Alignment: strict; code blocks, tables, and `dl` all share a left edge
 - Font spacing: none; body and code elements left fully native
 - Elements: `code`, `pre`, `kbd`, `samp`, `var`, `table`, `dl`, `details`/`summary` for collapsible sections
+- Font stacks: **Monospace Code** (primary), Monospace Slab Serif
 - Feel: precise, information-dense, developer-native
 
 ### Minimalist
@@ -138,6 +151,7 @@ design; every element needs a reason to exist.
 - Alignment: consistent and quiet; no element competes for attention
 - Font spacing: none or very subtle; let the browser scale speak
 - Elements: minimal; remove anything not earning its place
+- Font stacks: **System UI** (primary), Humanist, Geometric Humanist
 - Feel: calm, considered, spacious
 
 ---
