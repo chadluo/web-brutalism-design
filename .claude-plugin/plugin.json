@@ -1,0 +1,7 @@
+{
+  "name": "web-brutalism",
+  "description": "Web brutalism design guide: build UIs using browser-native default styles. Covers philosophy, HTML element selection, minimal CSS overrides for spacing/layout, and native interactive patterns.",
+  "author": {
+    "name": "y"
+  }
+}
