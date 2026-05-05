@@ -47,7 +47,7 @@ The principle: **if a property override is purely decorative, remove it.**
   removes browser inconsistencies so co-located controls align to the same size
 - `font-family` using system font stacks — selecting among fonts already installed on the OS
   imposes no download cost and respects the spirit of native materials; use stacks from
-  https://github.com/system-fonts/modern-font-stacks, chosen to match the style preset and
+  https://modernfontstacks.com/, chosen to match the style preset and
   typographic voice established in the design brief
 
 **Not allowed — decorative or costly:**
