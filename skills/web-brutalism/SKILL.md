@@ -41,8 +41,10 @@ The principle: **if a property override is purely decorative, remove it.**
 - Layout: `display: flex/grid`, `flex-direction`, `align-items`, `justify-content`, `grid-template-*`
 - Sizing: `width`, `max-width`, `min-width`, `max-height`, `flex: 1`, `flex-shrink`
 - Utility: `box-sizing: border-box`, `cursor: pointer`, `overflow`, `white-space`
-- Font spacing on headings: `letter-spacing`, `line-height` — use to refine typographic rhythm;
-  be conservative on body text where readability is the priority
+- Font spacing: `letter-spacing`, `line-height` — on headings to refine typographic rhythm; on
+  body text to improve readability (WCAG 1.4.12 requires content to remain readable at 1.5× line
+  height; browser defaults around 1.2 are below this — setting `line-height: 1.5` on body is
+  recommended)
 - Form element normalization: `font-size: inherit` on `input`, `button`, `select`, `textarea` —
   removes browser inconsistencies so co-located controls align to the same size
 - `font-family` using system font stacks — selecting among fonts already installed on the OS
@@ -51,12 +53,17 @@ The principle: **if a property override is purely decorative, remove it.**
   typographic voice established in the design brief
 
 **Not allowed — decorative or costly:**
-- `color`, `background-color` — breaks dark mode, high-contrast mode, accessibility preferences
+- `color`, `background-color` with custom values — breaks dark mode, high-contrast mode, accessibility preferences; CSS system color keywords (`CanvasText`, `Canvas`, `LinkText`, `GrayText`, `ButtonText`, etc.) are allowed, as they adapt automatically with `color-scheme`
 - Web fonts (`@font-face`, Google Fonts, Typekit, etc.) — download cost and foreign aesthetic;
   system font stacks are the alternative
 - `font-size` on semantic elements (`h1`–`h6`, `p`, `small`, etc.) — destroys the browser's scale
-- `border-color`, `border-radius`, `outline` — decorative; `outline` removal breaks focus visibility
-- `font-weight`, `text-transform` on body/paragraph elements
+- `border-color`, `border-radius` — decorative
+- `:focus { outline: none }` — removes focus rings for keyboard users; if suppressing mouse-click
+  rings is needed, use `:focus:not(:focus-visible) { outline: none }` instead; modern browsers
+  already apply focus rings via `:focus-visible` semantics by default
+- `font-weight` on body/paragraph elements — exception: `<label>` elements may use `font-weight`
+  to visually differentiate labels from input values in form UI chrome
+- `text-transform` on body/paragraph elements
 
 Use relative units (`em`, `lh`, `ch`, `rem`) for spacing rather than `px`. Relative units keep
 spacing proportional to typography and scale naturally with user font-size preferences. Absolute
@@ -249,14 +256,20 @@ add only the spacing needed.
 
 Only spacing CSS needed. No custom component library.
 
-## Accessibility Comes for Free
+## Accessibility Foundation
 
-- Focus styles: provided by the browser; respect `prefers-reduced-motion` and high-contrast mode
-- Color contrast: `color-scheme: light dark` adapts automatically
+Native HTML elements carry built-in accessibility support that custom components must rebuild from
+scratch: focus management, keyboard navigation, screen reader semantics, and system color
+adaptation via `color-scheme`. This is a head start, not a guarantee.
+
+- Focus styles: provided by the browser via `:focus-visible` — keyboard users see the ring, mouse
+  users don't; do not add `:focus { outline: none }`
+- Color adaptation: `color-scheme: light dark` makes system color keywords adapt automatically
 - Screen reader semantics: `<fieldset>`, `<label>`, `<button>`, `<details>` are already understood
-- Keyboard navigation: works without JavaScript
+- Keyboard navigation: works without JavaScript for native interactive elements
 
-Do not override `outline` — the browser's focus ring is functional.
+Per-project requirements (touch target sizes, `lang` attribute, `aria-*` for dynamic state,
+WCAG conformance level) must be confirmed during implementation — this guide doesn't cover them.
 
 ## Applying This Skill
 
