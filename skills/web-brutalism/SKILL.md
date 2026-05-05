@@ -37,6 +37,7 @@ The principle: **if a property override is purely decorative, remove it.**
 ## CSS Overrides: What Is and Isn't Allowed
 
 **Allowed — functional:**
+
 - Spacing: `margin`, `padding`, `gap`
 - Layout: `display: flex/grid`, `flex-direction`, `align-items`, `justify-content`, `grid-template-*`
 - Sizing: `width`, `max-width`, `min-width`, `max-height`, `flex: 1`, `flex-shrink`
@@ -53,7 +54,10 @@ The principle: **if a property override is purely decorative, remove it.**
   typographic voice established in the design brief
 
 **Not allowed — decorative or costly:**
-- `color`, `background-color` with custom values — breaks dark mode, high-contrast mode, accessibility preferences; CSS system color keywords (`CanvasText`, `Canvas`, `LinkText`, `GrayText`, `ButtonText`, etc.) are allowed, as they adapt automatically with `color-scheme`
+
+- `color`, `background-color` with custom values — breaks dark mode, high-contrast mode,
+  accessibility preferences; CSS system color keywords (`CanvasText`, `Canvas`, `LinkText`,
+  `GrayText`, `ButtonText`, etc.) are allowed, as they adapt automatically with `color-scheme`
 - Web fonts (`@font-face`, Google Fonts, Typekit, etc.) — download cost and foreign aesthetic;
   system font stacks are the alternative
 - `font-size` on semantic elements (`h1`–`h6`, `p`, `small`, etc.) — destroys the browser's scale
@@ -79,11 +83,16 @@ being imposed top-down.
   color-scheme: light dark;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-input, button, select, textarea {
+input,
+button,
+select,
+textarea {
   font-size: inherit;
 }
 ```
@@ -112,8 +121,10 @@ Each preset describes spacing density, alignment approach, and font-spacing stan
 units are project-specific; treat these as calibration profiles, not pixel recipes.
 
 ### Swiss International
+
 Grid-governed, flush-left, generous whitespace, strong typographic hierarchy. The closest
 philosophical cousin to brutalism — both prioritise rational structure over decoration.
+
 - Spacing: medium-generous; heading top-margin significantly larger than bottom-margin
 - Alignment: strict flush-left; grid columns respected across all elements
 - Font spacing: headings slightly tracked out (`letter-spacing: 0.02–0.05em`); body untouched
@@ -122,8 +133,10 @@ philosophical cousin to brutalism — both prioritise rational structure over de
 - Feel: authoritative, rational, clean
 
 ### Bauhaus / Functionalist
+
 Geometric, structured, form-follows-function. Uses visible native structure (fieldset borders,
 table lines, `hr`) as design elements rather than hiding them.
+
 - Spacing: tight-to-medium; structural elements (`fieldset`, `table`, `hr`) carry visual weight
 - Alignment: grid-governed, geometric grouping
 - Font spacing: uppercase headings with compensating `letter-spacing`; body untouched
@@ -132,8 +145,10 @@ table lines, `hr`) as design elements rather than hiding them.
 - Feel: industrial, purposeful, structured
 
 ### Editorial / Magazine
+
 Varied rhythm, pull quotes, captions, dynamic section contrast. The spacing variation is the
 design — a large gap before a section heading and a tight gap after it creates visual pull.
+
 - Spacing: variable; large gaps between sections, tight internal to sections
 - Alignment: mixed — body flush-left, `blockquote`/`figure` with distinct margin treatment
 - Font spacing: headings may use `letter-spacing` and adjusted `line-height` for rhythm
@@ -143,7 +158,9 @@ design — a large gap before a section heading and a tight gap after it creates
 - Feel: dynamic, journalistic, considered
 
 ### Technical / Documentation
+
 Dense, precise, monospace-forward. Native code and data elements are first-class.
+
 - Spacing: tight; minimal vertical gaps, strong horizontal alignment
 - Alignment: strict; code blocks, tables, and `dl` all share a left edge
 - Font spacing: none; body and code elements left fully native
@@ -152,8 +169,10 @@ Dense, precise, monospace-forward. Native code and data elements are first-class
 - Feel: precise, information-dense, developer-native
 
 ### Minimalist
+
 Maximum whitespace, restrained hierarchy, near-invisible structure. The generous spacing IS the
 design; every element needs a reason to exist.
+
 - Spacing: large — use 2–3× typical gaps; let content breathe
 - Alignment: consistent and quiet; no element competes for attention
 - Font spacing: none or very subtle; let the browser scale speak
@@ -182,15 +201,15 @@ Before reaching for `<div>` + JavaScript, check if a native element already does
 
 ### Interactive without JavaScript
 
-| Element | Native behaviour |
-|---|---|
-| `<details>` / `<summary>` | Collapsible disclosure — no JS accordion needed |
-| `<dialog>` | Modal — `dialog.showModal()` handles focus trap, backdrop, Escape key |
-| `<input type="range">` | Slider with min/max/step |
-| `<input type="color">` | OS color picker |
-| `<input type="date/time/datetime-local">` | OS date/time picker |
-| `<select>` / `<datalist>` | Dropdown or autocomplete |
-| `<progress>` / `<meter>` | Progress bar and value gauge |
+| Element                                   | Native behaviour                                                      |
+| ----------------------------------------- | --------------------------------------------------------------------- |
+| `<details>` / `<summary>`                 | Collapsible disclosure — no JS accordion needed                       |
+| `<dialog>`                                | Modal — `dialog.showModal()` handles focus trap, backdrop, Escape key |
+| `<input type="range">`                    | Slider with min/max/step                                              |
+| `<input type="color">`                    | OS color picker                                                       |
+| `<input type="date/time/datetime-local">` | OS date/time picker                                                   |
+| `<select>` / `<datalist>`                 | Dropdown or autocomplete                                              |
+| `<progress>` / `<meter>`                  | Progress bar and value gauge                                          |
 
 ### Form structure
 
@@ -227,10 +246,10 @@ add only the spacing needed.
 <form>
   <fieldset>
     <legend>Display</legend>
-    <label><input type="checkbox" name="darkMode"> Dark mode</label>
+    <label><input type="checkbox" name="darkMode" /> Dark mode</label>
     <label>
       Columns
-      <input type="range" name="columns" min="1" max="4" value="2">
+      <input type="range" name="columns" min="1" max="4" value="2" />
     </label>
     <label>
       Theme
@@ -246,7 +265,7 @@ add only the spacing needed.
     <summary>Advanced</summary>
     <fieldset>
       <legend>Developer</legend>
-      <label><input type="checkbox" name="debug"> Debug mode</label>
+      <label><input type="checkbox" name="debug" /> Debug mode</label>
     </fieldset>
   </details>
 
@@ -274,6 +293,7 @@ WCAG conformance level) must be confirmed during implementation — this guide d
 ## Applying This Skill
 
 When designing a new page:
+
 1. Establish the design brief — purpose and feel
 2. Pick a style preset as a calibration starting point
 3. Identify the function of each UI piece; find the native element that does it
@@ -282,6 +302,7 @@ When designing a new page:
 6. Stop — if a property is purely visual, it doesn't belong
 
 When reviewing existing UI, flag:
+
 - Custom `font-family`, `font-size` overrides on semantic elements
 - `color`/`background-color` not using system color keywords
 - `border-radius`, `text-transform`, `font-weight` on body elements (decorative)
