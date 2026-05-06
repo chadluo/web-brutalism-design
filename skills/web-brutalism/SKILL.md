@@ -23,11 +23,11 @@ mode, font size, contrast). Overriding these is work that must pay for itself.
 are removed, spacing and alignment carry all expressive weight: they signal focus, hierarchy, and
 tone. They are functional, not decorative.
 
-- **Spacing signals focus**: an element with more surrounding space than its neighbours reads as
-  more important. Titles have more breathing room than paragraphs for this reason.
 - **Alignment signals level**: elements sharing an alignment are read as peers. An element indented
   relative to its neighbours is read as subordinate. Hierarchy is expressed horizontally;
   vertical proximity signals grouping.
+- **Spacing signals focus**: an element with more surrounding space than its neighbours reads as
+  more important. Titles have more breathing room than paragraphs for this reason.
 - **Spacing density sets tone**: tight spacing reads as formal and efficient; loose spacing reads as
   relaxed and editorial. Extreme contrasts — very large headings against tight body, wide margins
   against dense type — read as bold and modern.
@@ -41,33 +41,31 @@ The principle: **if a property override is purely decorative, remove it.**
 - Spacing: `margin`, `padding`, `gap`
 - Layout: `display: flex/grid`, `flex-direction`, `align-items`, `justify-content`, `grid-template-*`
 - Sizing: `width`, `max-width`, `min-width`, `max-height`, `flex: 1`, `flex-shrink`
-- Utility: `box-sizing: border-box`, `cursor: pointer`, `overflow`, `white-space`
-- Font spacing: `letter-spacing`, `line-height` — on headings to refine typographic rhythm; on
+- Typography: `letter-spacing` and `line-height` on headings to refine typographic rhythm; on
   body text to improve readability (WCAG 1.4.12 requires content to remain readable at 1.5× line
   height; browser defaults around 1.2 are below this — setting `line-height: 1.5` on body is
-  recommended)
-- Form element normalization: `font-size: inherit` on `input`, `button`, `select`, `textarea` —
-  removes browser inconsistencies so co-located controls align to the same size
-- `font-family` using system font stacks — selecting among fonts already installed on the OS
-  imposes no download cost and respects the spirit of native materials; use stacks from
-  [modern-font-stacks.md](modern-font-stacks.md), chosen to match the style preset and
-  typographic voice established in the design brief
+  recommended); `font-size: inherit` on `input`, `button`, `select`, `textarea` removes browser
+  inconsistencies so co-located controls align to the same size; `font-family` using system font
+  stacks — selecting among fonts already installed on the OS imposes no download cost and respects
+  the spirit of native materials; use stacks from [modern-font-stacks.md](modern-font-stacks.md),
+  chosen to match the style preset and typographic voice established in the design brief
+- Utility: `box-sizing: border-box`, `cursor: pointer`, `overflow`, `white-space`
 
 **Not allowed — decorative or costly:**
 
 - `color`, `background-color` with custom values — breaks dark mode, high-contrast mode,
   accessibility preferences; CSS system color keywords (`CanvasText`, `Canvas`, `LinkText`,
   `GrayText`, `ButtonText`, etc.) are allowed, as they adapt automatically with `color-scheme`
+- `border-color`, `border-radius` — decorative
 - Web fonts (`@font-face`, Google Fonts, Typekit, etc.) — download cost and foreign aesthetic;
   system font stacks are the alternative
 - `font-size` on semantic elements (`h1`–`h6`, `p`, `small`, etc.) — destroys the browser's scale
-- `border-color`, `border-radius` — decorative
-- `:focus { outline: none }` — removes focus rings for keyboard users; if suppressing mouse-click
-  rings is needed, use `:focus:not(:focus-visible) { outline: none }` instead; modern browsers
-  already apply focus rings via `:focus-visible` semantics by default
 - `font-weight` on body/paragraph elements — exception: `<label>` elements may use `font-weight`
   to visually differentiate labels from input values in form UI chrome
 - `text-transform` on body/paragraph elements
+- `:focus { outline: none }` — removes focus rings for keyboard users; if suppressing mouse-click
+  rings is needed, use `:focus:not(:focus-visible) { outline: none }` instead; modern browsers
+  already apply focus rings via `:focus-visible` semantics by default
 
 Use relative units (`em`, `lh`, `ch`, `rem`) for spacing rather than `px`. Relative units keep
 spacing proportional to typography and scale naturally with user font-size preferences. Absolute
